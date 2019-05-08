@@ -5,6 +5,8 @@ var client = new discord.Client();
 
 client.on('ready', () => {
     console.log("I am ready");
+
+    client.user.setActivity("EXL|24/7", { type: "WATCHING" });
 })
 
 client.on('message', (msg) => {
