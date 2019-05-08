@@ -8,6 +8,7 @@ require('dotenv').config();
 var client = new discord_js_1.default.Client();
 client.on('ready', () => {
     console.log("I am ready");
+    client.user.setActivity("EXL|24/7", { type: "WATCHING" });
 });
 client.on('message', (msg) => {
     if (msg.content == "ping") {
