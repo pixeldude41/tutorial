@@ -34,29 +34,23 @@ client.on('message', (msg) => {
         msg.channel.send("pong!");
     }
 });
-const Discord = __importStar(require("discord.js"));
-class testCommand {
-    constructor() {
-        this._command = "test";
+const PREFIX = '!';
+var version = '1.0';
+client.on('message', message => {
+    let args = message.content.substring(PREFIX.length).split(" ");
+    switch (args[0]) {
+        case 'embed':
+            const embed = new discord_js_1.default.RichEmbed()
+                .setTitle('ServerInfo')
+                .addField('Player Name', message.author.username, true)
+                .addField('Version', version, true)
+                .addField('Current Server', message.guild.name, true)
+                .setColor(0xF1C40F)
+                .setThumbnail(message.author.avatarURL)
+                .setFooter('Test');
+            message.channel.sendEmbed(embed);
+            break;
     }
-    help() {
-        return "This command does absolutely nothing! How fun :)";
-    }
-    isThisCommand(command) {
-        return command === this._command;
-    }
-    async runCommand(args, msgObject, client) {
-        let embed = new Discord.RichEmbed()
-            .setColor([0, 200, 0])
-            .setTitle("Server Shutdown")
-            .setDescription("This chat channel has now shutdown and please use an alternative channel!")
-            .setImage(msgObject.guild.iconURL)
-            .setFooter("This server is no longer being updated!")
-            .setTimestamp(new Date());
-        msgObject.channel.send(embed)
-            .catch(console.error);
-    }
-}
-exports.default = testCommand;
+});
 client.login(process.env.DISCORD_TOKEN);
 client.login(ConfigFile.config.token);
