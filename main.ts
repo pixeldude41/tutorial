@@ -1,4 +1,4 @@
-import discord from "discord.js";
+import discord, { MessageEmbed } from "discord.js";
 
 import * as ConfigFile from "./src/config";
 require('dotenv').config();
@@ -38,7 +38,35 @@ client.on('message', (msg) => {
     }
 });
 
+import * as Discord from "discord.js";
 
+export default class testCommand implements IBotCommand {
+    
+    
+    private readonly _command = "test"
+    
+    help(): string {
+        return "This command does absolutely nothing! How fun :)";
+    }    
+
+    isThisCommand(command: string): boolean {
+        return command === this._command;
+    }
+
+    async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
+
+        let embed = new Discord.RichEmbed()
+                        .setColor([0,200,0])
+                        .setTitle("Server Shutdown")
+                        .setDescription("This chat channel has now shutdown and please use an alternative channel!")
+                        .setImage(msgObject.guild.iconURL)
+                        .setFooter("This server is no longer being updated!")
+                        .setTimestamp(new Date())
+        
+        msgObject.channel.send(embed)
+            .catch(console.error);             
+    }
+}
 
 client.login(process.env.DISCORD_TOKEN);
 client.login(ConfigFile.config.token);

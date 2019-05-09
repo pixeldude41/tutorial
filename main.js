@@ -11,7 +11,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = __importDefault(require("discord.js"));
-const ConfigFile = __importStar(require("./dist/config"));
+const ConfigFile = __importStar(require("./src/config"));
 require('dotenv').config();
 var client = new discord_js_1.default.Client();
 let commands = [];
@@ -34,5 +34,29 @@ client.on('message', (msg) => {
         msg.channel.send("pong!");
     }
 });
+const Discord = __importStar(require("discord.js"));
+class testCommand {
+    constructor() {
+        this._command = "test";
+    }
+    help() {
+        return "This command does absolutely nothing! How fun :)";
+    }
+    isThisCommand(command) {
+        return command === this._command;
+    }
+    async runCommand(args, msgObject, client) {
+        let embed = new Discord.RichEmbed()
+            .setColor([0, 200, 0])
+            .setTitle("Server Shutdown")
+            .setDescription("This chat channel has now shutdown and please use an alternative channel!")
+            .setImage(msgObject.guild.iconURL)
+            .setFooter("This server is no longer being updated!")
+            .setTimestamp(new Date());
+        msgObject.channel.send(embed)
+            .catch(console.error);
+    }
+}
+exports.default = testCommand;
 client.login(process.env.DISCORD_TOKEN);
 client.login(ConfigFile.config.token);
