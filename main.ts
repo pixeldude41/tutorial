@@ -48,9 +48,9 @@ client.on('message', message=>{
         case 'embed':
             const embed = new discord.RichEmbed()
             .setTitle('ServerInfo')
-            .addField('Player Name', message.author.username)
-            .addField('Version', version)
-            .addField('Current Server', message.guild.name)
+            .addField('Player Name', message.author.username, true)
+            .addField('Version', version, true)
+            .addField('Current Server', message.guild.name, true)
             .setColor(0xF1C40F)
             message.channel.sendEmbed(embed);
             break;
