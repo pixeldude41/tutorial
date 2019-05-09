@@ -38,33 +38,24 @@ client.on('message', (msg) => {
     }
 });
 
-export default class testCommand implements IBotCommand {
-    
-    
-    private readonly _command = "test"
-    
-    help(): string {
-        return "This command does absolutely nothing! How fun :)";
-    }    
+const PREFIX = '!';
 
-    isThisCommand(command: string): boolean {
-        return command === this._command;
+var version = '1.0';
+client.on('message', message=>{
+    let args = message.content.substring(PREFIX.length).split(" ");
+
+    switch(args[0]){
+        case 'embed':
+            const embed = new discord.RichEmbed()
+            .setTitle('ServerInfo')
+            .addField('Player Name', message.author.username)
+            .addField('Version', version)
+            .addField('Current Server', message.guild.name)
+            .setColor(0xF1C40F)
+            message.channel.sendEmbed(embed);
+            break;
     }
-
-    async runCommand(args: string[], msgObject: discord.Message, client: discord.Client): Promise<void> {
-
-        let embed = new discord.RichEmbed()
-                        .setColor([0,200,0])
-                        .setTitle("Server Shutdown")
-                        .setDescription("This chat channel has now shutdown and please use an alternative channel!")
-                        .setImage(msgObject.guild.iconURL)
-                        .setFooter("This server is no longer being updated!")
-                        .setTimestamp(new Date())
-        
-        msgObject.channel.send(discord.RichEmbed)
-            .catch(console.error);             
-    }
-}
+})
 
 client.login(process.env.DISCORD_TOKEN);
 client.login(ConfigFile.config.token);
