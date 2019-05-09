@@ -52,6 +52,8 @@ client.on('message', message=>{
             .addField('Version', version, true)
             .addField('Current Server', message.guild.name, true)
             .setColor(0xF1C40F)
+            .setThumbnail(message.author.avatarURL)
+            .setFooter('Test')
             message.channel.sendEmbed(embed);
             break;
     }
