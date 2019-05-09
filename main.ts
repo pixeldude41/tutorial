@@ -38,8 +38,6 @@ client.on('message', (msg) => {
     }
 });
 
-import * as Discord from "discord.js";
-
 export default class testCommand implements IBotCommand {
     
     
@@ -63,7 +61,7 @@ export default class testCommand implements IBotCommand {
                         .setFooter("This server is no longer being updated!")
                         .setTimestamp(new Date())
         
-        msgObject.channel.send(embed)
+        msgObject.channel.send(discord.RichEmbed)
             .catch(console.error);             
     }
 }
