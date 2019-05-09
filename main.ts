@@ -3,7 +3,9 @@ import discord from "discord.js";
 
 require('dotenv').config();
 var client = new discord.Client();
-
+import { IBotCommand } from "./api";
+import { MessageChannel } from "worker_threads";
+import { Guild } from "discord.js";
 
 client.on('ready', () => {
     console.log("I am ready");
