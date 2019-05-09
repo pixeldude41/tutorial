@@ -11,7 +11,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = __importDefault(require("discord.js"));
-const ConfigFile = __importStar(require("./config"));
+const ConfigFile = __importStar(require("./dist/config"));
 require('dotenv').config();
 var client = new discord_js_1.default.Client();
 let commands = [];

@@ -1,9 +1,9 @@
 import discord from "discord.js";
 
-import * as ConfigFile from "./config";
+import * as ConfigFile from "./src/config";
 require('dotenv').config();
 var client = new discord.Client();
-import { IBotCommand } from "./api";
+import { IBotCommand } from "./src/api";
 import { MessageChannel } from "worker_threads";
 import { Guild } from "discord.js";
 
