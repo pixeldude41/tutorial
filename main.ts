@@ -1,12 +1,13 @@
 import discord from "discord.js";
 
-
+import * as ConfigFile from "./config";
 require('dotenv').config();
 var client = new discord.Client();
 import { IBotCommand } from "./api";
 import { MessageChannel } from "worker_threads";
 import { Guild } from "discord.js";
 
+let commands: IBotCommand[] = [];
 client.on('ready', () => {
     console.log("I am ready");
 
@@ -40,3 +41,4 @@ client.on('message', (msg) => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+client.login(ConfigFile.config.token);

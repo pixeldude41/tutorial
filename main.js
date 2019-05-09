@@ -2,10 +2,19 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = __importDefault(require("discord.js"));
+const ConfigFile = __importStar(require("./config"));
 require('dotenv').config();
 var client = new discord_js_1.default.Client();
+let commands = [];
 client.on('ready', () => {
     console.log("I am ready");
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });
@@ -26,3 +35,4 @@ client.on('message', (msg) => {
     }
 });
 client.login(process.env.DISCORD_TOKEN);
+client.login(ConfigFile.config.token);
