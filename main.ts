@@ -53,9 +53,9 @@ export default class testCommand implements IBotCommand {
         return command === this._command;
     }
 
-    async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
+    async runCommand(args: string[], msgObject: discord.Message, client: discord.Client): Promise<void> {
 
-        let embed = new Discord.RichEmbed()
+        let embed = new discord.RichEmbed()
                         .setColor([0,200,0])
                         .setTitle("Server Shutdown")
                         .setDescription("This chat channel has now shutdown and please use an alternative channel!")
