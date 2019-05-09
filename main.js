@@ -47,7 +47,7 @@ client.on('message', message => {
                 .addField('Current Server', message.guild.name, true)
                 .setColor(0xF1C40F)
                 .setThumbnail(message.author.avatarURL)
-                .setFooter('Test');
+                .setFooter('As you know I am 24/7!');
             message.channel.sendEmbed(embed);
             break;
     }
