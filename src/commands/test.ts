@@ -1,6 +1,6 @@
 import * as Discord from "discord.js";
 
-import { IBotCommand } from "./api";
+import { IBotCommand } from "../api";
 
 export default class testCommand implements IBotCommand {
     
