@@ -98,4 +98,3 @@ function loadCommands(commandsPAth: string) {
 }
 
 client.login(process.env.DISCORD_TOKEN);
-client.login(ConfigFile.config.token);
