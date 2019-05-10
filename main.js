@@ -17,6 +17,7 @@ var client = new discord_js_1.default.Client();
 let commands = [];
 client.on('ready', () => {
     console.log("I am ready");
+    setInterval(updateTimeChannelGMT, 1000)
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });
 });
 client.on("guildMemberAdd", member => {
@@ -52,5 +53,54 @@ client.on('message', message => {
             break;
     }
 });
+
+const dateTime = require("node-datetime");
+var afkUsers = {}
+function updateTimeChannelGMT () {
+  var timeGMT = dateTime.create();
+  var showTimeGMT = timeGMT.format('I:M:S p ');
+  let timeChannelGMT = client.channels.get("576373699121381388")
+  timeChannelGMT.setName(showTimeGMT+'GMT')
+}
+function checkUserAFK(messageMentions) {
+    let mentionedUsers = messageMentions.array()
+    for (i=0; i < mentionedUsers.length; i++) {
+      if (afkUsers[mentionedUsers[i].tag] !== undefined) {
+        return {userTag: mentionedUsers[i].tag, userReason: afkUsers[mentionedUsers[i].tag]}
+      }
+      return
+    }
+  }
+
+  client.on('message', msg => {
+    var content = msg.content
+      parts = content.split(" ")
+    if (afkUsers[msg.author.tag] !== undefined) {
+      let noticeNoLongerAFK = new discord.RichEmbed()
+        .setColor(3447003)
+        .addField(`${msg.author.tag} is no longer AFK`, "Registered", true)
+      msg.channel.send({ embed: noticeNoLongerAFK })
+      afkUsers[msg.author.tag] = undefined
+    }
+    if (msg.content.startsWith(PREFIX+"afk ")) {
+      afkUsers[msg.author.tag] = msg.content.substring(5)
+      let noticeSetAFK = new discord.RichEmbed()
+        .setColor(3447003)
+        .addField(`You are now AFK for reason ${afkUsers[msg.author.tag]}`, "Registered", true)
+      msg.channel.send({ embed: noticeSetAFK })
+      console.log("DEBUG: Recieved AFK set message")
+    }
+    if (msg.mentions.users === undefined) return
+        let checkAFKResult = checkUserAFK(msg.mentions.users)
+        if (checkAFKResult !== undefined) {
+          let noticeUserAFK = new discord.RichEmbed()
+            .setColor(3447003)
+            .addField(`${checkAFKResult.userTag} is currently AFK for reason: ${checkAFKResult.userReason}`, "Registered", true)
+          msg.channel.send({ embed: noticeUserAFK })
+          console.log("DEBUG: User checked is AFK")
+        }        
+  
+  })
+  
 client.login(process.env.DISCORD_TOKEN);
 client.login(ConfigFile.config.token);

@@ -1,5 +1,4 @@
 import discord, { MessageEmbed } from "discord.js";
-
 import * as ConfigFile from "./src/config";
 require('dotenv').config();
 var client = new discord.Client();
@@ -37,6 +36,7 @@ client.on('message', (msg) => {
         msg.channel.send("pong!");
     }
 });
+
 
 const PREFIX = '!';
 
