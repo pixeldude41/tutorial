@@ -82,7 +82,6 @@ client.on('message', message => {
 			.setColor(3447003)
 			.addField(`You are now AFK for reason ${afkUsers[message.author.tag]}`, "Registered", true)
 		message.channel.send({ embed: noticeSetAFK })
-		console.log("DEBUG: Recieved AFK set message")
 	}
 	if (message.mentions.users === undefined) return
 		let checkAFKResult = checkUserAFK(message.mentions.users)
@@ -91,7 +90,6 @@ client.on('message', message => {
 				.setColor(3447003)
 				.addField(`${checkAFKResult.userTag} is currently AFK for reason: ${checkAFKResult.userReason}`, "Registered", true)
 			message.channel.send({ embed: noticeUserAFK })
-			console.log("DEBUG: User checked is AFK")
 		} 
 });
 client.on('message', message => {
