@@ -85,7 +85,7 @@ client.on('message', message=>{
             .setDescription(args.join(" "))
             .setColor([0,200,0])
             .setThumbnail(message.author.avatarURL)
-            .setFooter('Registered')
+            .setFooter('CustomEmbed')
             message.channel.sendEmbed(embed);
             break;
     }
