@@ -4,7 +4,7 @@
   "description": "EXLONE",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.ts"
   },
   "author": "EXLONE",
   "license": "ISC",
