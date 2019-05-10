@@ -1,4 +1,4 @@
-import discord, { MessageEmbed } from "discord.js";
+import discord, { MessageEmbed, ClientUser } from "discord.js";
 import * as ConfigFile from "./src/config";
 require('dotenv').config();
 var client = new discord.Client();
@@ -63,12 +63,29 @@ client.on('message', message=>{
         case 'serverinfo':
             const embed = new discord.RichEmbed()
             .setTitle('ServerInfo')
-            .addField('Title', ('A Brief Intro!'))
             .setDescription(`The Owner of the server is EXLONE and we are a small gaming community!`)
-            .addField('Description', (`The server curently has ${message.guild.memberCount}`))
+            .addField(`Member Count`,(`The server curently has ${message.guild.memberCount} Members!`))
+            .addField('Extra', ('Also btw this Server is currently in Alpha'))
+            .addField('Version', version, true)
             .setColor(0xF1C40F)
             .setThumbnail(message.guild.iconURL)
             .setFooter('Thanks for requesting me!')
+            message.channel.sendEmbed(embed);
+            break;
+    }
+})
+
+client.on('message', message=>{
+    let args = message.content.substring(PREFIX.length).split(" ");
+
+    switch(args[0]){
+        case 'customembed':
+            const embed = new discord.RichEmbed()
+            .setAuthor(message.author.username)
+            .setDescription(args.join(" "))
+            .setColor([0,200,0])
+            .setThumbnail(message.author.avatarURL)
+            .setFooter('Registered')
             message.channel.sendEmbed(embed);
             break;
     }
