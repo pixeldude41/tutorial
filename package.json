@@ -1,12 +1,12 @@
 {
   "name": "tutorial",
   "version": "1.0.0",
-  "description": "",
+  "description": "EXLONE",
   "main": "main.js",
   "scripts": {
     "start": "node main.js"
   },
-  "author": "",
+  "author": "EXLONE",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^12.0.0",
