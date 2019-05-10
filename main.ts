@@ -1,12 +1,12 @@
 import discord, { MessageEmbed, ClientUser } from "discord.js";
-import * as ConfigFile from "./src/config";
+
 require('dotenv').config();
 var client = new discord.Client();
-import { IBotCommand } from "./src/api";
+
 import { MessageChannel } from "worker_threads";
 import { Guild } from "discord.js";
 
-let commands: IBotCommand[] = [];
+
 client.on('ready', () => {
     console.log("I am ready");
 
