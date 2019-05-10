@@ -50,9 +50,10 @@ client.on('message', message => {
         case 'serverinfo':
             const embed = new discord_js_1.default.RichEmbed()
                 .setTitle('ServerInfo')
-                .addField('Title', ('A Brief Intro!'))
                 .setDescription(`The Owner of the server is EXLONE and we are a small gaming community!`)
-                .addField('Description', (`The server curently has ${message.guild.memberCount}`))
+                .addField(`Member Count`, (`The server curently has ${message.guild.memberCount} Members!`))
+                .addField('Extra', ('Also btw this Server is currently in Alpha'))
+                .addField('Version', version, true)
                 .setColor(0xF1C40F)
                 .setThumbnail(message.guild.iconURL)
                 .setFooter('Thanks for requesting me!');
