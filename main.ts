@@ -20,23 +20,7 @@ client.on("guildMemberAdd", member => {
 
     member.send("Thank you for Joining our server!")
     member.send("Hello, My name is EXL! As you know I'm just a regular bot and anyways if you need help with anything in the near future just type help in chat we will be right their to help you out gladly! Best Wishes EXL ")
-    client.on('message', message=>{
-        let args = message.content.substring(PREFIX.length).split(" ");
     
-        switch(args[0]){
-            case 'epic':
-                const embed = new discord.RichEmbed()
-                .setTitle('User Information')
-                .addField('Player Name', message.author.username, true)
-                .addField('Version', version, true)
-                .addField('Current Server', message.guild.name, true)
-                .setColor(0xF1C40F)
-                .setThumbnail(message.author.avatarURL)
-                .setFooter('As you know I am 24/7!')
-                message.channel.sendEmbed(embed);
-                break;
-        }
-    })
 })
 
 client.on("guildMemberRemove", member => {
