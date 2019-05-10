@@ -41,7 +41,7 @@ client.on('message', message=>{
     let args = message.content.substring(PREFIX.length).split(" ");
 
     switch(args[0]){
-        case 'user':
+        case 'user9':
             const embed = new discord.RichEmbed()
             .setTitle('User Information')
             .addField('Player Name', message.author.username, true)
