@@ -35,10 +35,7 @@ client.on('message', (msg) => {
         msg.channel.send("pong!");
     }
 });
-
-
 const PREFIX = '!';
-
 var version = '1.0';
 client.on('message', message=>{
     let args = message.content.substring(PREFIX.length).split(" ");
@@ -57,6 +54,7 @@ client.on('message', message=>{
             break;
     }
 })
+
 
 client.login(process.env.DISCORD_TOKEN);
 
