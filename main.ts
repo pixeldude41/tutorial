@@ -79,7 +79,7 @@ client.on('message', message=>{
     let args = message.content.substring(PREFIX.length).split(" ");
 
     switch(args[0]){
-        case 'customembed':
+        case '-':
             const embed = new discord.RichEmbed()
             .setAuthor(message.author.username)
             .setDescription(args.join(" "))
