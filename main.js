@@ -61,4 +61,18 @@ client.on('message', message => {
             break;
     }
 });
+client.on('message', message => {
+    let args = message.content.substring(PREFIX.length).split(" ");
+    switch (args[0]) {
+        case 'customembed':
+            const embed = new discord_js_1.default.RichEmbed()
+                .setAuthor(message.author.username)
+                .setDescription(args.join(" "))
+                .setColor([0, 200, 0])
+                .setThumbnail(message.author.avatarURL)
+                .setFooter('Registered');
+            message.channel.sendEmbed(embed);
+            break;
+    }
+});
 client.login(process.env.DISCORD_TOKEN);
