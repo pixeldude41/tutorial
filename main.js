@@ -44,4 +44,20 @@ client.on('message', message => {
             break;
     }
 });
+client.on('message', message => {
+    let args = message.content.substring(PREFIX.length).split(" ");
+    switch (args[0]) {
+        case 'serverinfo':
+            const embed = new discord_js_1.default.RichEmbed()
+                .setTitle('ServerInfo')
+                .addField('Title', ('A Brief Intro!'))
+                .setDescription(`The Owner of the server is EXLONE and we are a small gaming community!`)
+                .addField('Description', (`The server curently has ${message.guild.memberCount}`))
+                .setColor(0xF1C40F)
+                .setThumbnail(message.guild.iconURL)
+                .setFooter('Thanks for requesting me!');
+            message.channel.sendEmbed(embed);
+            break;
+    }
+});
 client.login(process.env.DISCORD_TOKEN);
