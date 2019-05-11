@@ -69,9 +69,17 @@ client.on('message', message => {
                 .setDescription(args.join(" "))
                 .setColor([0, 200, 0])
                 .setThumbnail(message.author.avatarURL)
-                .setFooter('Registered');
+                .setFooter('CustomEmbed');
             message.channel.sendEmbed(embed);
             break;
+    }
+});
+client.on(`message`, async (message) => {
+    if (message.content.startsWith(`${PREFIX}createchannel`)) {
+        const args = message.content.slice(15);
+        message.guild.createChannel(`${args}`).then(channel => {
+            channel.setTopic(`Creates a channel!`);
+        });
     }
 });
 client.login(process.env.DISCORD_TOKEN);

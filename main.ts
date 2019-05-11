@@ -1,4 +1,4 @@
-import discord, { MessageEmbed, ClientUser, Channel } from "discord.js";
+import discord, { MessageEmbed, ClientUser, Channel, Role, Message } from "discord.js";
 
 require('dotenv').config();
 var client = new discord.Client();
@@ -90,6 +90,17 @@ client.on('message', message=>{
             break;
     }
 })
+
+client.on(`message`, async message => {
+    if(message.content.startsWith(`${PREFIX}createchannel`)) {
+        const args = message.content.slice(15);
+        message.guild.createChannel(`${args}`).then(channel => {
+            channel.setTopic(`Creates a channel!`)
+        })
+    }
+})
+    
+
 
 client.login(process.env.DISCORD_TOKEN);
 
