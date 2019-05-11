@@ -21,6 +21,8 @@ client.on("guildMemberAdd", member => {
     member.send("Thank you for Joining our server!")
     member.send("Hello, My name is EXL! As you know I'm just a regular bot and anyways if you need help with anything in the near future just type help in chat we will be right their to help you out gladly! Best Wishes EXL ")
     
+    var role = member.guild.roles.find ("name", "Alpha");
+    member.addRole (role);
 })
 
 client.on("guildMemberRemove", member => {
@@ -100,7 +102,13 @@ client.on(`message`, async message => {
     }
 })
     
+client.on(`message`, async message => {
+    if(message.content.startsWith(`${PREFIX}deletechannel`)) {
+        const args = message.content.slice(15);
+        message.channel.delete(`${args}`).then()
 
+    }
+})
 
 client.login(process.env.DISCORD_TOKEN);
 

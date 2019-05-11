@@ -15,6 +15,8 @@ client.on("guildMemberAdd", member => {
     welcomeChannel.send(`Welcome ${member.displayName}! We hope you enjoy your time here!`);
     member.send("Thank you for Joining our server!");
     member.send("Hello, My name is EXL! As you know I'm just a regular bot and anyways if you need help with anything in the near future just type help in chat we will be right their to help you out gladly! Best Wishes EXL ");
+    var role = member.guild.roles.find("name", "Alpha");
+    member.addRole(role);
 });
 client.on("guildMemberRemove", member => {
     let welcomeChannel = member.guild.channels.find(channel => channel.name === "welcome");
@@ -80,6 +82,12 @@ client.on(`message`, async (message) => {
         message.guild.createChannel(`${args}`).then(channel => {
             channel.setTopic(`Creates a channel!`);
         });
+    }
+});
+client.on(`message`, async (message) => {
+    if (message.content.startsWith(`${PREFIX}deletechannel`)) {
+        const args = message.content.slice(15);
+        message.channel.delete(`${args}`).then();
     }
 });
 client.login(process.env.DISCORD_TOKEN);
