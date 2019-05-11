@@ -115,7 +115,7 @@ client.on ("message", (message) => {
         case 'commands':
             const embed = new discord.RichEmbed()
             .setTitle('Commands')
-            .addField('Prefix',(``))
+            .addField('Prefix',(`!`))
             .setColor([0,200,0])
             .setThumbnail(message.guild.icon)
             .setFooter('These are all the commands which are available')
