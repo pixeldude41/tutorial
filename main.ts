@@ -1,4 +1,4 @@
-import discord, { MessageEmbed, ClientUser } from "discord.js";
+import discord, { MessageEmbed, ClientUser, Channel } from "discord.js";
 
 require('dotenv').config();
 var client = new discord.Client();
