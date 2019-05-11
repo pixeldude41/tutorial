@@ -90,4 +90,18 @@ client.on(`message`, async (message) => {
         message.channel.delete(`${args}`).then();
     }
 });
+client.on("message", (message) => {
+    let args = message.content.substring(PREFIX.length).split(" ");
+    switch (args[0]) {
+        case 'commands':
+            const embed = new discord_js_1.default.RichEmbed()
+                .setTitle('Commands')
+                .addField('Prefix', (``))
+                .setColor([0, 200, 0])
+                .setThumbnail(message.guild.icon)
+                .setFooter('These are all the commands which are available');
+            message.channel.sendEmbed(embed);
+            break;
+    }
+});
 client.login(process.env.DISCORD_TOKEN);
