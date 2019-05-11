@@ -32,7 +32,7 @@ var version = '1.0';
 client.on('message', message => {
     let args = message.content.substring(PREFIX.length).split(" ");
     switch (args[0]) {
-        case 'user9':
+        case 'user':
             const embed = new discord_js_1.default.RichEmbed()
                 .setTitle('User Information')
                 .addField('Player Name', message.author.username, true)
@@ -97,6 +97,10 @@ client.on("message", (message) => {
             const embed = new discord_js_1.default.RichEmbed()
                 .setTitle('Commands')
                 .addField('Prefix', (`!`))
+                .addField('Serverinfo', ("Information about the server!"))
+                .addField('- (Your Message)', ('Sends a Customembed with a message!'))
+                .addField('User', ('Tells about user Information!'))
+                .addField('Rules', ('Shows the rules!'))
                 .setColor([0, 200, 0])
                 .setThumbnail(message.guild.iconURL)
                 .setFooter('These are all the commands which are available');
