@@ -117,7 +117,7 @@ client.on ("message", (message) => {
             .setTitle('Commands')
             .addField('Prefix',(`!`))
             .setColor([0,200,0])
-            .setThumbnail(message.guild.icon)
+            .setThumbnail(message.guild.iconURL)
             .setFooter('These are all the commands which are available')
             message.channel.sendEmbed(embed);
             break;
