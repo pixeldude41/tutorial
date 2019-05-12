@@ -91,7 +91,7 @@ client.on(`message`, message => {
         const filter = (reaction) => reaction.name === '🤖';
         message.awaitReactions(filter, { time: 30000 })
             .then(collected => {
-            message.channel.send(collected.size + "Success");
+            message.channel.send("Success");
         })
             .catch(console.error);
     }
