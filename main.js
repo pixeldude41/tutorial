@@ -94,7 +94,7 @@ client.on(`message`, message => {
         async function purge() {
             message.delete();
             if (!message.member.roles.find("name", "GOD")) {
-                message.channel.send('You need the \`GOD`\ role to use this command.');
+                message.channel.send('You need the \`GOD\` role to use this command.');
                 return;
             }
             if (isNaN(arguments[0])) {
