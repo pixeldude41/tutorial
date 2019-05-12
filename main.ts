@@ -113,7 +113,19 @@ client.on(`message`, message => {
     }
 })
     
-        
+client.on('ready', function() {
+    console.log(client.user.username);
+});
+
+client.on('message', message => function() {
+    if (message.content === "!loop") { 
+      var interval = setInterval (function () {
+        message.channel.send("Error")
+      }, 1 * 1000); 
+    }
+});
+
+    
 client.on ("message", (message) => {
     let args = message.content.substring(PREFIX.length).split(" ");
 
