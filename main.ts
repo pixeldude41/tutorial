@@ -4,6 +4,7 @@ require('dotenv').config();
 var client = new discord.Client();
 import { MessageChannel } from "worker_threads";
 import { Guild } from "discord.js";
+import { isNumber } from "util";
 client.on('ready', () => {
     console.log("I am ready");
     client.user.setStatus("dnd");
@@ -103,14 +104,16 @@ client.on(`message`, message => {
     if(message.content.startsWith(`${PREFIX}react`)) {
         message.react ('🤖');
         const filter = (reaction: Emoji) => reaction.name === '🤖';
-        message.awaitReactions(filter,{time: 3000})
+        message.awaitReactions(filter,{time: 30000})
         .then (collected => {
-            message.channel.send (collected.size + "reactions collected");
+            message.channel.send (collected.size + " reactions collected");
         })
         .catch (console.error);
 
     }
-})        
+})
+    
+        
 client.on ("message", (message) => {
     let args = message.content.substring(PREFIX.length).split(" ");
 

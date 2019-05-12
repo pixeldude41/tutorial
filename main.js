@@ -89,9 +89,9 @@ client.on(`message`, message => {
     if (message.content.startsWith(`${PREFIX}react`)) {
         message.react('🤖');
         const filter = (reaction) => reaction.name === '🤖';
-        message.awaitReactions(filter, { time: 3000 })
+        message.awaitReactions(filter, { time: 30000 })
             .then(collected => {
-            message.channel.send(collected.size + "reactions collected");
+            message.channel.send(collected.size + " reactions collected");
         })
             .catch(console.error);
     }
