@@ -106,9 +106,9 @@ client.on(`message`, message => {
         const filter = (reaction: Emoji) => reaction.name === '🤖';
         message.awaitReactions(filter,{time: 30000})
         .then (collected => {
-            message.channel.send (collected.size + " reactions collected");
+            message.channel.send (collected.size + " ");
         })
-        .catch (console.error);
+        .catch(console.error);
 
     }
 })
