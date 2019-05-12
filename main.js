@@ -7,9 +7,13 @@ const discord_js_1 = __importDefault(require("discord.js"));
 require('dotenv').config();
 var client = new discord_js_1.default.Client();
 client.on('ready', () => {
+    var testChannel = client.channels.find(channel => channel.id === '577201657864126473');
     console.log("I am ready");
     client.user.setStatus("dnd");
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });
+    setInterval(() => {
+        testChannel.send("This Message is set on a 10 second interval");
+    }, 10000);
 });
 client.on("guildMemberAdd", member => {
     let welcomeChannel = member.guild.channels.find(channel => channel.name === "welcome");
@@ -94,13 +98,6 @@ client.on(`message`, message => {
             message.channel.send("Success");
         })
             .catch(console.error);
-    }
-});
-client.on('message', message => function () {
-    if (message.content === "$loop") {
-        var interval = setInterval(function () {
-            message.channel.sendMessage("Error");
-        }, 1 * 1000);
     }
 });
 client.on("message", (message) => {

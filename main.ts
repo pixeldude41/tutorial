@@ -6,9 +6,13 @@ import { MessageChannel } from "worker_threads";
 import { Guild } from "discord.js";
 import { isNumber } from "util";
 client.on('ready', () => {
+    var testChannel = client.channels.find(channel => channel.id === '577201657864126473') as discord.TextChannel;
     console.log("I am ready");
     client.user.setStatus("dnd");
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });
+    setInterval(() => {
+        testChannel.send("This Message is set on a 10 second interval");
+    }, 10000);
 })
 
 client.on("guildMemberAdd", member => {
@@ -113,13 +117,7 @@ client.on(`message`, message => {
     }
 })
 
-client.on('message', message => function() {
-    if (message.content === "$loop") { 
-      var interval = setInterval (function () {
-        message.channel.sendMessage("Error")
-      }, 1 * 1000); 
-    }
-})
+
 
     
 client.on ("message", (message) => {
