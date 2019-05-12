@@ -6,7 +6,7 @@ import { MessageChannel } from "worker_threads";
 import { Guild } from "discord.js";
 client.on('ready', () => {
     console.log("I am ready");
-
+    client.user.setStatus("dnd");
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });
 })
 
@@ -99,13 +99,32 @@ client.on(`message`, async message => {
     }
 })
     
-client.on(`message`, async message => {
-    if(message.content.startsWith(`${PREFIX}deletechannel`)) {
-        const args = message.content.slice(15);
-        message.channel.delete(`${args}`).then()
+client.on(`message`, message => {
+    let msg = message.content.toUpperCase();
+    let sender = message.author;
+    let cont = message.content.slice(PREFIX.length).split(" ");
+    let args = cont.slice(1);
+    
+    if(msg.startsWith(PREFIX + 'PURGE')) {
+        async function purge() {
+            message.delete();
+
+            if (!message.member.roles.find("name", "GOD")) {
+                message.channel.send('You need the \`GOD`\ role to use this command.');
+                return;
+            }
+            if (isNaN(arguments[0])) {
+                message.channel.send('Please use a number as your arguements. \n Usage: ' + PREFIX + 'purge <amount>');
+                return;
+            }
+            const fetched = await message.channel.fetchMessages({limit: arguments[0]});
+            console.log(fetched.size + ' messages found, deleting...');
+            message.channel.bulkDelete(fetched)
+            .catch(error => message.channel.send(`Error: ${error}`));
+        }
 
     }
-})
+});
 client.on ("message", (message) => {
     let args = message.content.substring(PREFIX.length).split(" ");
 
