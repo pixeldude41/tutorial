@@ -12,8 +12,8 @@ client.on('ready', () => {
     client.user.setStatus("dnd");
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });
     setInterval(() => {
-        testChannel.send("This Message is set on a 10 second interval");
-    }, 10000);
+        testChannel.send("This bot is currently in maintenance and its full version has not been currently published! You may experience some errors! Thank you for reading!");
+    }, 100000);
 });
 client.on("guildMemberAdd", member => {
     let welcomeChannel = member.guild.channels.find(channel => channel.name === "welcome");
