@@ -7,12 +7,12 @@ const discord_js_1 = __importDefault(require("discord.js"));
 require('dotenv').config();
 var client = new discord_js_1.default.Client();
 client.on('ready', () => {
-    var testChannel = client.channels.find(channel => channel.id === '553704407674650649');
+    var welcomeChannel = client.channels.find(channel => channel.id === '553704407674650649');
     console.log("I am ready");
     client.user.setStatus("dnd");
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });
     setInterval(() => {
-        testChannel.send("This bot is currently in maintenance and its full version has not been currently published! You may experience some errors! Thank you for reading!");
+        welcomeChannel.send("This bot is currently in maintenance and its full version has not been currently published! You may experience some errors! Thank you for reading!");
     }, 100000);
 });
 client.on("guildMemberAdd", member => {

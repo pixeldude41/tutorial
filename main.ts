@@ -6,13 +6,13 @@ import { MessageChannel } from "worker_threads";
 import { Guild } from "discord.js";
 import { isNumber } from "util";
 client.on('ready', () => {
-    var testChannel = client.channels.find(channel => channel.id === '553704407674650649') as discord.TextChannel;
+    var welcomeChannel = client.channels.find(channel => channel.id === '553704407674650649') as discord.TextChannel;
     console.log("I am ready");
     client.user.setStatus("dnd");
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });
     setInterval(() => {
-        testChannel.send("This bot is currently in maintenance and its full version has not been currently published! You may experience some errors! Thank you for reading!");
-    }, 100000);
+        welcomeChannel.send("This bot is currently in maintenance and its full version has not been currently published! You may experience some errors! Thank you for reading!");
+    }, 10000);
 })
 
 client.on("guildMemberAdd", member => {
