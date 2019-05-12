@@ -96,13 +96,10 @@ client.on(`message`, message => {
             .catch(console.error);
     }
 });
-client.on('ready', function () {
-    console.log(client.user.username);
-});
 client.on('message', message => function () {
-    if (message.content === "!loop") {
+    if (message.content === "$loop") {
         var interval = setInterval(function () {
-            message.channel.send("Error");
+            message.channel.sendMessage("Error");
         }, 1 * 1000);
     }
 });
