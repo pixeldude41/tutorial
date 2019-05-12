@@ -85,6 +85,17 @@ client.on(`message`, async (message) => {
         });
     }
 });
+client.on(`message`, message => {
+    if (message.content.startsWith(`${PREFIX}react`)) {
+        message.react('🤖');
+        const filter = (reaction) => reaction.name === '🤖';
+        message.awaitReactions(filter, { time: 3000 })
+            .then(collected => {
+            message.channel.send(collected.size + "reactions collected");
+        })
+            .catch(console.error);
+    }
+});
 client.on("message", (message) => {
     let args = message.content.substring(PREFIX.length).split(" ");
     switch (args[0]) {
