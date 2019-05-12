@@ -7,7 +7,7 @@ const discord_js_1 = __importDefault(require("discord.js"));
 require('dotenv').config();
 var client = new discord_js_1.default.Client();
 client.on('ready', () => {
-    var testChannel = client.channels.find(channel => channel.id === '577201657864126473');
+    var testChannel = client.channels.find(channel => channel.id === '553704407674650649');
     console.log("I am ready");
     client.user.setStatus("dnd");
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });

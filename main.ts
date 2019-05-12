@@ -6,7 +6,7 @@ import { MessageChannel } from "worker_threads";
 import { Guild } from "discord.js";
 import { isNumber } from "util";
 client.on('ready', () => {
-    var testChannel = client.channels.find(channel => channel.id === '577201657864126473') as discord.TextChannel;
+    var testChannel = client.channels.find(channel => channel.id === '553704407674650649') as discord.TextChannel;
     console.log("I am ready");
     client.user.setStatus("dnd");
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });
