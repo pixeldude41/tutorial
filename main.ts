@@ -2,11 +2,8 @@ import discord, { MessageEmbed, ClientUser, Channel, Role, Message } from "disco
 
 require('dotenv').config();
 var client = new discord.Client();
-
 import { MessageChannel } from "worker_threads";
 import { Guild } from "discord.js";
-
-
 client.on('ready', () => {
     console.log("I am ready");
 
@@ -56,6 +53,7 @@ client.on('message', message=>{
             break;
     }
 })
+
 
 client.on('message', message=>{
     let args = message.content.substring(PREFIX.length).split(" ");
