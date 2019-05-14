@@ -103,7 +103,19 @@ client.on(`message`, async message => {
         })
     }
 })
-    
+
+client.on(`message`, message => {
+    let args = message.content.substring(PREFIX.length).split(" ");
+
+    switch (args[0]) {
+        case 'private':
+        if(!message.member.roles.find(r => r.name === "Alpha")) return message.channel.send('You do not have permissions!')
+        message.reply('The test is successful')
+    break;
+    }
+
+
+})
 client.on(`message`, message => {
     if(message.content.startsWith(`${PREFIX}react`)) {
         message.react ('🤖');
