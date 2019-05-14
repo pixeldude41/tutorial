@@ -13,7 +13,7 @@ client.on('ready', () => {
     client.user.setActivity("EXL|24/7", { type: "WATCHING" });
     setInterval(() => {
         welcomeChannel.send("This bot is currently in maintenance and its full version has not been currently published! You may experience some errors! Thank you for reading!");
-    }, 600000);
+    }, 6000000);
 });
 client.on("guildMemberAdd", member => {
     let welcomeChannel = member.guild.channels.find(channel => channel.name === "welcome");
