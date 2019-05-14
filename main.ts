@@ -109,7 +109,7 @@ client.on(`message`, message => {
 
     switch (args[0]) {
         case 'private':
-        if(!message.member.roles.find(r => r.name === "Alpha")) return message.channel.send('You do not have permissions!')
+        if(!message.member.roles.find(roles => roles.name === "GOD")) return message.channel.send('You do not have permissions!')
         message.reply('The test is successful')
     break;
     }
