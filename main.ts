@@ -5,6 +5,7 @@ var client = new discord.Client();
 import { MessageChannel } from "worker_threads";
 import { Guild } from "discord.js";
 import { isNumber } from "util";
+import { send } from "process";
 client.on('ready', () => {
     var welcomeChannel = client.channels.find(channel => channel.id === '553704407674650649') as discord.TextChannel;
     console.log("I am ready");
